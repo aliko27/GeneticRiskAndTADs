@@ -76,11 +76,12 @@ rule extract_count_matrices:
     output:
         fname_matrix='results/hic_files/counts/{source}/{chromosome}/matrix.csv',
     conda:
-        'envs/python_stack.yaml'
+        'envs/python_stack.yaml',
     resources:
         mem_mb=10_000,
     script:
         'scripts/extract_count_matrices.py'
+
 
 
 rule gather_input_information:
@@ -173,13 +174,13 @@ rule provide_input_files:
     input:
         disgenet_fname=url_wrapper(config['input_files']['disgenet']),
         gwascatalog_fname=url_wrapper(config['input_files']['gwascatalog']),
-        efo_fname=url_wrapper(config['input_files']['exp_factor_ontology']),
-        so_fname=url_wrapper(config['input_files']['sequence_ontology']),
+        #efo_fname=url_wrapper(config['input_files']['exp_factor_ontology']),
+        #so_fname=url_wrapper(config['input_files']['sequence_ontology']),
     output:
         disgenet_fname='results/input/disgenet.tsv',
         gwascatalog_fname='results/input/gwas_catalog.tsv',
-        efo_fname='results/input/efo.owl',
-        so_fname='results/input/so.owl',
+        #efo_fname='results/input/efo.owl',
+        #so_fname='results/input/so.owl',
     conda:
         'envs/python_stack.yaml'
     script:
@@ -190,8 +191,8 @@ rule assemble_input_databases:
     input:
         disgenet_fname='results/input/disgenet.tsv',
         gwascatalog_fname='results/input/gwas_catalog.tsv',
-        efo_fname='results/input/efo.owl',
-        so_fname='results/input/so.owl',
+        efo_fname='results/input/efo.obo',
+        so_fname='results/input/so.obo',
     output:
         db_fname='results/databases/initial.csv',
         raw_veps='results/databases/vep.csv',

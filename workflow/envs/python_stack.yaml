@@ -8,22 +8,23 @@ dependencies:
   - zstd
 
   # Python stuff
-  - python==3.7
+  - python==3.9
   - pip
 
   # C++ deps for pip packages
   - armadillo
   - cython
-  - graph-tool
+  #- graph-tool
 
   - pip:
-    - numpy
-    - pandas
+    - numpy==1.23
+    - pandas==1.5
     - scipy
     - networkx
     - pyranges
     - seaborn
     - matplotlib
+    - obonet
 
     - sh
     - tqdm
@@ -44,9 +45,7 @@ dependencies:
     - jupyter
     - jupyter_contrib_nbextensions
 
-    - gene_map
+    #- gene_map
     - ipy_pdcache
-    - bioinf_common
 
-    - git+https://github.com/kpj/onto2nx
     - git+https://github.com/kpj/pybiomart
